@@ -1,3 +1,8 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>New Rambling</h1>
+  </div>
+<div class="panel-body">
 <%= form_for(@rambling) do |f| %>
   <% if @rambling.errors.any? %>
     <div id="error_explanation">
@@ -11,11 +16,13 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit "Ramble", class: "btn btn-danger" %>
   </div>
 <% end %>
+</div>
+</div>
