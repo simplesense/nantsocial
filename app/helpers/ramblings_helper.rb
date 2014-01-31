@@ -1,0 +1,2 @@
+module RamblingsHelper
+end

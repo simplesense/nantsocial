@@ -1,4 +1,6 @@
 Nantsocial::Application.routes.draw do
+  resources :ramblings
+
   devise_for :users
   root 'pages#home'
   get 'about' => 'pages#about'

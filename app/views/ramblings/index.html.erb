@@ -1,0 +1,27 @@
+<h1>Listing ramblings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ramblings.each do |rambling| %>
+      <tr>
+        <td><%= rambling.description %></td>
+        <td><%= link_to 'Show', rambling %></td>
+        <td><%= link_to 'Edit', edit_rambling_path(rambling) %></td>
+        <td><%= link_to 'Destroy', rambling, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rambling', new_rambling_path %>
