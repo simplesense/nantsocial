@@ -4,7 +4,7 @@ echo "Enter your commit comments:"
 read commits
 git commit -am "$commits"
 echo "All changes committed. Pushing to github."
-git push
+git push origin master
 echo "Now pushing to Heroku."
 git push heroku master
 echo "Heroku files updated."
