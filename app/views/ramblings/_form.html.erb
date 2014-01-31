@@ -1,4 +1,4 @@
-<%= form_for(@rambling) do |f| %>
+<%= form_for @rambling, html: { multipart: true } do |f| %>
   <% if @rambling.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@rambling.errors.count, "error") %> prohibited this rambling from being saved:</h2>
@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <%= f.label :"Attach an Image" %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
   <div class="form-group">
     <%= f.text_field :description, class: "form-control" %>
   </div>

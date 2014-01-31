@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
-
+<%= image_tag @rambling.image.url(:medium) %>
 <p>
-  <strong><%= @rambling.user.email %></strong>
+  <small><%= @rambling.user.email %></small>
   <h2><%= @rambling.description %></h2>
 </p>
 <% if @rambling.user == current_user %>

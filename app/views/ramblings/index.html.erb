@@ -4,6 +4,7 @@
   <tbody>
     <% @ramblings.each do |rambling| %>
       <tr>
+        <td><%= image_tag rambling.image.url(:medium) %></td>
         <td><%= rambling.description %></td>
         <td><%= rambling.user.email if rambling.user %></td>
         <td><%= link_to 'Show', rambling %></td>
