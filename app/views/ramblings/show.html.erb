@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @rambling.description %>
+  <strong><%= @rambling.user.email %></strong>
+  <h2><%= @rambling.description %></h2>
 </p>
-
+<% if @rambling.user == current_user %>
 <%= link_to 'Edit', edit_rambling_path(@rambling) %> |
+<% end %>
 <%= link_to 'Back', ramblings_path %>

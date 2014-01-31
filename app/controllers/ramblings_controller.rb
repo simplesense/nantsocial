@@ -1,5 +1,7 @@
 class RamblingsController < ApplicationController
   before_action :set_rambling, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @ramblings = Rambling.all
@@ -9,16 +11,16 @@ class RamblingsController < ApplicationController
   end
 
   def new
-    @rambling = Rambling.new
+    @rambling = current_user.ramblings.build
   end
 
   def edit
   end
 
   def create
-    @rambling = Rambling.new(rambling_params)
+    @rambling = current_user.ramblings.build(rambling_params)
       if @rambling.save
-        redirect_to @rambling, notice: 'Rambling was successfully created.'
+        redirect_to @rambling, notice: 'Success! You rambled.'
       else
         render action: 'new'
       end
@@ -26,7 +28,7 @@ class RamblingsController < ApplicationController
 
   def update
       if @rambling.update(rambling_params)
-        redirect_to @rambling, notice: 'Rambling was successfully updated.'
+        redirect_to @rambling, notice: 'Yay! Successfully updated.'
       else
         render action: 'edit'
       end
@@ -43,8 +45,13 @@ class RamblingsController < ApplicationController
       @rambling = Rambling.find(params[:id])
     end
 
+    def correct_user
+      @rambling = current_user.ramblings.find_by(id: params[:id])
+      redirect_to ramblings_path, notice: "Grumpy cats disapproves of you unauthorized edits to other's rambling" if @rambling.nil?
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def rambling_params
-      params.require(:rambling).permit(:description)
+      params.require(:rambling).permit(:description, :image)
     end
 end
