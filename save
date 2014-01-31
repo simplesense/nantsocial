@@ -1,0 +1,19 @@
+git add .
+echo "Added changed files."
+echo "Enter your commit comments:"
+read commits
+git commit -am "$commits"
+echo "All changes committed. Pushing to github."
+git push
+echo "Now pushing to Heroku."
+git push heroku master
+echo "Heroku files updated."
+while true; do
+read -p "Run rake db:migrate on Heroku?" yn
+case $yn in
+[Yy]* ) heroku run rake db:migrate; break;;
+[Nn]* ) exit;;
+* ) echo "Please answer yes or no.";;
+esac
+done
+echo "All tasks have been completed."
