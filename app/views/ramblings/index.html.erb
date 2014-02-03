@@ -1,3 +1,5 @@
+<%= render 'pages/home' if user_signed_in? %>
+
 <div id="ramblings" class="transitions-enabled">
   <% @ramblings.each do |rambling| %>
     <div class="box panel panel-default">

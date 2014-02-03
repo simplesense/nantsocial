@@ -2,7 +2,7 @@ Nantsocial::Application.routes.draw do
   resources :ramblings
 
   devise_for :users
-  root 'pages#home'
+  root 'ramblings#index'
   get 'about' => 'pages#about'
 
   # Example of regular route:
