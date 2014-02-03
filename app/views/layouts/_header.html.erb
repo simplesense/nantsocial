@@ -14,16 +14,30 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "HOME", root_path %></li>
-      <li><%= link_to "RAMBLINGS", ramblings_path %></li>
+      <li><%= link_to root_path do%>
+          <span class="glyphicon glyphicon-home"></span> HOME<% end %>
+        </li>
+      <li><%= link_to ramblings_path do%>
+          <span class="glyphicon glyphicon-bullhorn"></span> RAMBLINGS<% end %>
+        </li>
       <% if user_signed_in? %>
-        <li><%= link_to 'NEW RAMBLING', new_rambling_path %></li>
-      <% end %>
-			<li><%= link_to "RAMBLERS", "#" %></li>
-      <li><%= link_to "ABOUT", about_path %></li>
+        <li><%= link_to new_rambling_path do%>
+          <span class="glyphicon glyphicon-plus"></span> NEW RAMBLING<% end %>
+        </li>
+        <% end %>
+			<li><%= link_to "#" do%>
+          <span class="glyphicon glyphicon-user"></span> RAMBLERS<% end %>
+        </li>
+      <li><%= link_to about_path do%>
+          <span class="glyphicon glyphicon-info-sign"></span> ABOUT<% end %>
+        </li>
       <% if user_signed_in? %>
-        <li><%= link_to "SETTINGS", edit_user_registration_path %></li>
-        <li><%= link_to "LOG OUT", destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to edit_user_registration_path do%>
+          <span class="glyphicon glyphicon-cog"></span> SETTINGS<% end %>
+        </li>
+        <li><%= link_to destroy_user_session_path, method: :delete do%>
+          <span class="glyphicon glyphicon-cog"></span> LOG OUT<% end %>
+        </li>
       <% else %>
         <li><%= link_to "LOG IN", new_user_session_path %></li>
         <li><%= link_to "SIGN UP", new_user_registration_path %></li>

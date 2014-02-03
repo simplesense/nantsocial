@@ -1,17 +1,20 @@
 <%= link_to 'Back', ramblings_path, class: "btn btn-primary btn-large" %>
 
 <div class="row">
-  <div class="col-md-offset-2 col-md-8">
+  <div class="col-md-offset-1 col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading center">
-        <%= image_tag @rambling.image.url(:medium) %>
+        <%= image_tag @rambling.image.url(:large) %>
       </div>
       <div class="panel-body">
         <p><h3><%= @rambling.description %></h3></p>
         <p><strong><%= @rambling.user.email if @rambling.user %></strong></p>
 
         <% if @rambling.user == current_user %>
-         <%= link_to 'Edit', edit_rambling_path(@rambling), class: "btn btn-primary btn-xs" %>
+         <%= link_to edit_rambling_path(@rambling) do %>
+        <span class="glyphicon glyphicon-edit"></span>
+        Edit
+      <% end %>
         <% end %>
 
       </div>
