@@ -1,23 +1,16 @@
-<h1>Latest Ramblings</h1>
-
-<table class="table table-striped">
-  <tbody>
-    <% @ramblings.each do |rambling| %>
-      <tr>
-        <td><%= image_tag rambling.image.url(:medium) %></td>
-        <td><%= rambling.description %></td>
-        <td><%= rambling.user.email if rambling.user %></td>
-        <td><%= link_to 'Show', rambling %></td>
-        <% if rambling.user == current_user %>
-        <td><%= link_to 'Edit', edit_rambling_path(rambling) %></td>
-        <td><%= link_to 'Destroy', rambling, method: :delete, data: { confirm: 'Regret already! Delete for sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% if user_signed_in? %>
-<%= link_to 'New Rambling', new_rambling_path %>
-<% end %>
+<div id="ramblings" class="transitions-enabled">
+  <% @ramblings.each do |rambling| %>
+    <div class="box panel panel-default">
+      <%= image_tag rambling.image.url(:medium) %>
+      <div class="panel-body">
+      <%= rambling.description %>
+      <%= rambling.user.email if rambling.user %>
+      <%= link_to 'Show', rambling_path(rambling) %>
+      <% if rambling.user == current_user %>
+        <%= link_to 'Edit', edit_rambling_path(rambling) %>
+        <%= link_to 'Destroy', rambling, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+    </div>
+  <% end %>
+</div>
