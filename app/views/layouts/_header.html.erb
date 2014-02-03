@@ -17,16 +17,13 @@
       <li><%= link_to root_path do%>
           <span class="glyphicon glyphicon-home"></span> HOME<% end %>
         </li>
-      <li><%= link_to ramblings_path do%>
-          <span class="glyphicon glyphicon-bullhorn"></span> RAMBLINGS<% end %>
-        </li>
       <% if user_signed_in? %>
         <li><%= link_to new_rambling_path do%>
-          <span class="glyphicon glyphicon-plus"></span> NEW RAMBLING<% end %>
+          <span class="glyphicon glyphicon-plus"></span> NEW POST<% end %>
         </li>
         <% end %>
 			<li><%= link_to "#" do%>
-          <span class="glyphicon glyphicon-user"></span> RAMBLERS<% end %>
+          <span class="glyphicon glyphicon-user"></span> USERS<% end %>
         </li>
       <li><%= link_to about_path do%>
           <span class="glyphicon glyphicon-info-sign"></span> ABOUT<% end %>
