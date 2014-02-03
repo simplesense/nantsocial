@@ -6,7 +6,7 @@
       <%= link_to image_tag(rambling.image.url(:medium)), rambling %>
       <div class="panel-body">
       <%= rambling.description %><br />
-      <strong><%= rambling.user.email if rambling.user %></strong>
+      <strong><%= rambling.user.name if rambling.user %></strong>
       <% if rambling.user == current_user %>
         <div class="actions">
           <%= link_to edit_rambling_path(rambling) do %>

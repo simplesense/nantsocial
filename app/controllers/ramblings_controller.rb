@@ -4,7 +4,7 @@ class RamblingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @ramblings = Rambling.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    @ramblings = Rambling.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 25)
   end
 
   def show
