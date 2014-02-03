@@ -1,14 +1,17 @@
 <div id="ramblings" class="transitions-enabled">
   <% @ramblings.each do |rambling| %>
     <div class="box panel panel-default">
-      <%= image_tag rambling.image.url(:medium) %>
+      <%= link_to image_tag(rambling.image.url(:medium)), rambling %>
       <div class="panel-body">
-      <%= rambling.description %>
-      <%= rambling.user.email if rambling.user %>
-      <%= link_to 'Show', rambling_path(rambling) %>
+      <%= rambling.description %><br />
+      <strong><%= rambling.user.email if rambling.user %></strong>
       <% if rambling.user == current_user %>
-        <%= link_to 'Edit', edit_rambling_path(rambling) %>
-        <%= link_to 'Destroy', rambling, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div class="actions">
+          <span class="admin">
+            <%= link_to 'Edit', edit_rambling_path(rambling), class: "btn btn-default btn-xs btn-block" %>
+            <%= link_to 'Delete', rambling, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-info btn-xs btn-block" %>
+          </span>
+        </div>
       <% end %>
     </div>
     </div>

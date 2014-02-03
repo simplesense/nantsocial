@@ -1,9 +1,20 @@
-<%= image_tag @rambling.image.url(:medium) %>
-<p>
-  <small><%= @rambling.user.email %></small>
-  <h2><%= @rambling.description %></h2>
-</p>
-<% if @rambling.user == current_user %>
-<%= link_to 'Edit', edit_rambling_path(@rambling) %> |
-<% end %>
-<%= link_to 'Back', ramblings_path %>
+<%= link_to 'Back', ramblings_path, class: "btn btn-primary btn-large" %>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        <%= image_tag @rambling.image.url(:medium) %>
+      </div>
+      <div class="panel-body">
+        <p><h3><%= @rambling.description %></h3></p>
+        <p><strong><%= @rambling.user.email if @rambling.user %></strong></p>
+
+        <% if @rambling.user == current_user %>
+         <%= link_to 'Edit', edit_rambling_path(@rambling), class: "btn btn-primary btn-xs" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
