@@ -1,4 +1,6 @@
 Nantsocial::Application.routes.draw do
+  resources :members
+
   resources :ramblings
 
   devise_for :users
