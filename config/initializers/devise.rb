@@ -103,7 +103,7 @@ Devise.setup do |config|
   # able to access the website for two days without confirming his account,
   # access will be blocked just in the third day. Default is 0.days, meaning
   # the user cannot access the website without confirming his account.
-  config.allow_unconfirmed_access_for = 0.days
+  # config.allow_unconfirmed_access_for = 0.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -141,6 +141,7 @@ Devise.setup do |config|
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
   # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[\w+\-.]+@nanthealth.com/i
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
